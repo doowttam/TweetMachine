@@ -8,6 +8,14 @@ $.ajaxSetup({
     password: '',
 });
 
+function buildTweetHTML(tweet) {
+    return "<div class='tweetWrapper'>"
+        + "<div class='avatar'></div>"
+        + "<div class='tweetBody'><span class='username'>"
+        + tweet.user.screen_name + "</span><span class='tweetText'>"
+        + tweet.text + "</span></div>";
+}
+
 function getNewTweets() {
     air.trace('getting new tweets');
     $.getJSON('http://twitter.com/statuses/friends_timeline.json?since_id=' + lastTweetId, function(tweets) {
@@ -23,7 +31,7 @@ function centerNewTweet() {
     if ( typeof newTweet == 'undefined' ) {
         return;
     }
-    $('#tweets').prepend('<li>' + newTweet.user.screen_name + ' - ' + newTweet.text + '</li>');
+    $('#tweets').prepend(buildTweetHTML(newTweet));
     updateQueueLength();
 }
 
