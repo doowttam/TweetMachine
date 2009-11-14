@@ -8,11 +8,13 @@ body {
     margin: 0px auto;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    overflow: hidden;
 }
 .tweet {
     border-bottom: 1px solid #cccccc;
     overflow: hidden;
     height: 70px;
+    display: none;
 }
 .timeline > .tweet:last-child {
     border-bottom: 0px;

@@ -37,6 +37,7 @@ function initialPopulate() {
     $.each( initialTweets, function(index, tweet) {
         $('#timeline').prepend(buildTweetHTML(tweet));
     });
+    $('.tweet').show();
     updateQueueLength();
 }
 
@@ -47,11 +48,13 @@ function rotateTweets() {
         return;
     }
 
-    if ( $('.tweet').size() > 9 ) {
-        $('.tweet:last').remove();
-    }
-
     $('#timeline').prepend(buildTweetHTML(newTweet));
+    $('.tweet:first').slideDown("normal", function() {
+        if ( $('.tweet').size() > 10 ) {
+            $('.tweet:last').remove();
+        }
+    });
+
     updateQueueLength();
 }
 
