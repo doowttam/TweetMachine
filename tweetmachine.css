@@ -4,7 +4,7 @@ body {
 .timeline {
     background-color: white;
     width: 800px;
-    height: 700px;
+    height: 710px;
     margin: 0px auto;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -14,12 +14,17 @@ body {
     overflow: hidden;
     height: 70px;
 }
+.timeline > .tweet:last-child {
+    border-bottom: 0px;
+}
 .avatar {
     float: left;
-    max-width: 50px;
-    max-height: 50px;
     margin: 10px;
     text-align: center;
+}
+.avatar img {
+    max-width: 50px;
+    max-height: 50px;
 }
 .tweetBody {
     float: left;
