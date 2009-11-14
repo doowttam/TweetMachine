@@ -9,29 +9,38 @@ $.ajaxSetup({
 });
 
 function buildTweetHTML(tweet) {
-    return "<div class='tweetWrapper'>"
-        + "<div class='avatar'></div>"
+    return "<div class='tweet'>"
+        + "<div class='avatar'><img src='" + tweet.user.profile_image_url + "' /></div>"
         + "<div class='tweetBody'><span class='username'>"
         + tweet.user.screen_name + "</span><span class='tweetText'>"
-        + tweet.text + "</span></div>";
+        + tweet.text + "</span></div></div>";
 }
 
 function getNewTweets() {
-    air.trace('getting new tweets');
+    air.trace('Getting new tweets');
     $.getJSON('http://twitter.com/statuses/friends_timeline.json?since_id=' + lastTweetId, function(tweets) {
-        tweets.reverse();
-        tweetQueue = tweetQueue.concat(tweets);
-        lastTweetId = tweets[tweets.length - 1].id;
+        if (tweets.length > 1) {
+            tweets.reverse();
+            tweetQueue = tweetQueue.concat(tweets);
+            lastTweetId = tweets[tweets.length - 1].id;
+        } else if ( tweets.length > 0 ) {
+            lastTweetId = tweets[0].id;
+        }
     });
 }
 
-function centerNewTweet() {
-    air.trace('centering tweet');
+function rotateTweets() {
+    air.trace('Rotating Tweets');
     var newTweet = tweetQueue.shift();
     if ( typeof newTweet == 'undefined' ) {
         return;
     }
-    $('#tweets').prepend(buildTweetHTML(newTweet));
+
+    if ( $('.tweet').size() > 9 ) {
+        $('.tweet:last').remove();
+    }
+
+    $('#timeline').prepend(buildTweetHTML(newTweet));
     updateQueueLength();
 }
 
@@ -42,6 +51,6 @@ function updateQueueLength() {
 
 getNewTweets();
 
-$(document).everyTime(30000, function() { centerNewTweet(); }, 0); 
+$(document).everyTime(30000, function() { rotateTweets(); }, 0); 
 
 $(document).everyTime(300000, function() { getNewTweets(); }, 0);

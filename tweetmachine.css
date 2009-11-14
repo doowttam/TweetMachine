@@ -1,0 +1,32 @@
+body {
+    background-color: #9ae4e8;
+}
+.timeline {
+    background-color: white;
+    width: 800px;
+    height: 700px;
+    margin: 0px auto;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.tweet {
+    border-bottom: 1px solid #cccccc;
+    overflow: hidden;
+    height: 70px;
+}
+.avatar {
+    float: left;
+    max-width: 50px;
+    max-height: 50px;
+    margin: 10px;
+    text-align: center;
+}
+.tweetBody {
+    float: left;
+    width: 675px;
+    padding: 10px;
+}
+.username {
+    font-weight: bold;
+    margin-right: 10px;
+}
