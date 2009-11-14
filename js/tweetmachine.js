@@ -16,7 +16,7 @@ function buildTweetHTML(tweet) {
         + tweet.text + "</span></div></div>";
 }
 
-function getNewTweets() {
+function getNewTweets(populate) {
     air.trace('Getting new tweets');
     $.getJSON('http://twitter.com/statuses/friends_timeline.json?since_id=' + lastTweetId, function(tweets) {
         if (tweets.length > 1) {
@@ -26,7 +26,18 @@ function getNewTweets() {
         } else if ( tweets.length > 0 ) {
             lastTweetId = tweets[0].id;
         }
+        if (populate == 1) {
+            initialPopulate();
+        }
     });
+}
+
+function initialPopulate() {
+    var initialTweets = tweetQueue.splice(0, 10);
+    $.each( initialTweets, function(index, tweet) {
+        $('#timeline').prepend(buildTweetHTML(tweet));
+    });
+    updateQueueLength();
 }
 
 function rotateTweets() {
@@ -49,7 +60,7 @@ function updateQueueLength() {
     $('#queueLength').text(tweetQueue.length);
 }
 
-getNewTweets();
+getNewTweets(1);
 
 $(document).everyTime(30000, function() { rotateTweets(); }, 0); 
 
