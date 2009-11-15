@@ -87,7 +87,6 @@ function rotateTweets() {
 
 function updateQueueLength() {
     air.trace('updateQueueLength:' + tweetQueue.length);
-    $('#queueLength').text(tweetQueue.length);
 }
 
 getNewTweets(1);

@@ -5,7 +5,7 @@ body {
     background-color: white;
     width: 800px;
     height: 280px;
-    margin: 0px auto;
+    margin: 30px auto 0px auto;
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
     -webkit-border-top-left-radius: 10px;
@@ -63,14 +63,11 @@ body {
     font-weight: bold;
     margin-right: 10px;
 }
-
 .centerTweet .tweet {
     height: 140px;
     border-bottom: 0px;
     font-size: 1.8em;
 }
-
 .centerTweet .tweetBody {
     width: 850px;
 }
-
