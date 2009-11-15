@@ -4,7 +4,7 @@ body {
 .timelineTOP {
     background-color: white;
     width: 800px;
-    height: 140px;
+    height: 280px;
     margin: 0px auto;
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
@@ -15,7 +15,7 @@ body {
 .timelineBOTTOM {
     background-color: white;
     width: 800px;
-    height: 420px;
+    height: 280px;
     margin: 0px auto;
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;

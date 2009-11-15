@@ -33,9 +33,9 @@ function getNewTweets(populate) {
 }
 
 function initialPopulate() {
-    var bottomTweets = tweetQueue.splice(0, 6);
+    var bottomTweets = tweetQueue.splice(0, 4);
     var centerTweet = tweetQueue.shift();
-    var topTweets = tweetQueue.splice(0, 2);
+    var topTweets = tweetQueue.splice(0, 4);
 
 
     $.each( bottomTweets, function(index, tweet) {
@@ -64,7 +64,7 @@ function rotateTweets() {
     $('.centerTweet > .tweet:last-child').clone().css('display', 'none').prependTo('.timelineBOTTOM');
 
     $('.timelineTOP > .tweet:first-child').slideDown("normal", function() {
-        if ( $('.timelineTOP .tweet').size() > 2 ) {
+        if ( $('.timelineTOP .tweet').size() > 4 ) {
             $('.timelineTOP > .tweet:last-child').remove();
         }
 
@@ -77,7 +77,7 @@ function rotateTweets() {
     });
 
     $('.timelineBOTTOM > .tweet:first-child').slideDown("normal", function() {
-        if ( $('.timelineBOTTOM .tweet').size() > 6 ) {
+        if ( $('.timelineBOTTOM .tweet').size() > 4 ) {
             $('.timelineBOTTOM > .tweet:last-child').remove();
         }
     });
