@@ -33,10 +33,21 @@ function getNewTweets(populate) {
 }
 
 function initialPopulate() {
-    var initialTweets = tweetQueue.splice(0, 10);
-    $.each( initialTweets, function(index, tweet) {
-        $('#timeline').prepend(buildTweetHTML(tweet));
+    var bottomTweets = tweetQueue.splice(0, 6);
+    var centerTweet = tweetQueue.shift();
+    var topTweets = tweetQueue.splice(0, 2);
+
+
+    $.each( bottomTweets, function(index, tweet) {
+        $('.timelineBOTTOM').prepend(buildTweetHTML(tweet));
     });
+
+    $('.centerTweet').prepend(buildTweetHTML(centerTweet));
+
+    $.each( topTweets, function(index, tweet) {
+        $('.timelineTOP').prepend(buildTweetHTML(tweet));
+    });
+
     $('.tweet').show();
     updateQueueLength();
 }
@@ -48,10 +59,26 @@ function rotateTweets() {
         return;
     }
 
-    $('#timeline').prepend(buildTweetHTML(newTweet));
-    $('.tweet:first').slideDown("normal", function() {
-        if ( $('.tweet').size() > 10 ) {
-            $('.tweet:last').remove();
+    $('.timelineTOP').prepend(buildTweetHTML(newTweet));
+    $('.timelineTOP > .tweet:last-child').clone().css('display', 'none').prependTo('.centerTweet');
+    $('.centerTweet > .tweet:last-child').clone().css('display', 'none').prependTo('.timelineBOTTOM');
+
+    $('.timelineTOP > .tweet:first-child').slideDown("normal", function() {
+        if ( $('.timelineTOP .tweet').size() > 2 ) {
+            $('.timelineTOP > .tweet:last-child').remove();
+        }
+
+    });
+    
+    $('.centerTweet > .tweet:first-child').slideDown("normal", function() {
+        if ( $('.centerTweet .tweet').size() > 1 ) {
+            $('.centerTweet > .tweet:last-child').remove();
+        }
+    });
+
+    $('.timelineBOTTOM > .tweet:first-child').slideDown("normal", function() {
+        if ( $('.timelineBOTTOM .tweet').size() > 6 ) {
+            $('.timelineBOTTOM > .tweet:last-child').remove();
         }
     });
 
