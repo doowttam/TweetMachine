@@ -2,11 +2,14 @@
 var tweetQueue = new Array();
 var lastTweetId = 1;
 
-// Initialization
-$.ajaxSetup({
-    username: '',
-    password: '',
-});
+var oauth_options = {
+    consumerKey: '',
+    consumerSecret: '',
+    accessTokenKey: '',
+    accessTokenSecret: ''
+};
+
+var oauth = OAuth(oauth_options);
 
 function buildTweetHTML(tweet) {
     return "<div class='tweet'>"
@@ -18,7 +21,9 @@ function buildTweetHTML(tweet) {
 
 function getNewTweets(populate) {
     air.trace('Getting new tweets');
-    $.getJSON('http://twitter.com/statuses/friends_timeline.json?since_id=' + lastTweetId, function(tweets) {
+    oauth.get('http://api.twitter.com/1/statuses/home_timeline.json?since_id=' + lastTweetId, function(data) {
+        air.Introspector.Console.log(data);
+        var tweets = $.parseJSON(data.text);
         if (tweets.length > 1) {
             tweets.reverse();
             tweetQueue = tweetQueue.concat(tweets);
