@@ -132,8 +132,23 @@ function updateQueueLength() {
     air.trace('updateQueueLength:' + tweetQueue.length);
 }
 
-getNewTweets(1);
+function toggleMode() {
+    air.trace('toggling mode');
 
-$(document).everyTime(30000, function() { rotateTweets(); }, 0); 
+    tweetQueue  = [];
+    lastTweetId = 1;
+    searchMode  = !searchMode;
 
-$(document).everyTime(300000, function() { getNewTweets(); }, 0);
+    getNewTweets(1);
+}
+
+function init() {
+    air.trace('init');
+
+    getNewTweets(1);
+
+    $(document).everyTime(30000, function() { rotateTweets(); }, 0);
+
+    $(document).everyTime(300000, function() { getNewTweets(); }, 0);
+}
+
