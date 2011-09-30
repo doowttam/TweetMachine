@@ -140,10 +140,23 @@ function toggleMode() {
     searchMode  = !searchMode;
 
     getNewTweets(1);
+
+    setBackgroundColor();
+}
+
+function setBackgroundColor() {
+    if ( searchMode ) {
+        $('body').css('background-color', '#9156e8');
+    }
+    else {
+        $('body').css('background-color', '#56e1e8');
+    }
 }
 
 function init() {
     air.trace('init');
+
+    setBackgroundColor();
 
     getNewTweets(1);
 
