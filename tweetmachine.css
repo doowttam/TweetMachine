@@ -4,8 +4,8 @@ body {
 .timelineTOP {
     background-color: white;
     width: 800px;
-    height: 280px;
-    margin: 30px auto 0px auto;
+    height: 296px;
+    margin: 14px auto 0px auto;
     -moz-border-radius-topleft: 10px;
     -moz-border-radius-topright: 10px;
     -webkit-border-top-left-radius: 10px;
@@ -15,7 +15,7 @@ body {
 .timelineBOTTOM {
     background-color: white;
     width: 800px;
-    height: 280px;
+    height: 296px;
     margin: 0px auto;
     -moz-border-radius-bottomleft: 10px;
     -moz-border-radius-bottomright: 10px;
@@ -38,7 +38,8 @@ body {
     overflow: hidden;
     height: 70px;
     display: none;
-    font-size: 1.3em;
+    font-size: 1.4em;
+    padding: 2px 0px;
 }
 .timelineTOP > .tweet:last-child {
     border-bottom: 0px;
@@ -58,7 +59,7 @@ body {
 .tweetBody {
     float: left;
     width: 675px;
-    padding: 10px;
+    padding: 6px;
 }
 .username {
     font-weight: bold;
@@ -67,7 +68,7 @@ body {
 .centerTweet .tweet {
     height: 140px;
     border-bottom: 0px;
-    font-size: 2.45em;
+    font-size: 2.4em;
 }
 .centerTweet .tweetBody {
     width: 850px;
