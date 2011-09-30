@@ -139,6 +139,11 @@ function toggleMode() {
     lastTweetId = 1;
     searchMode  = !searchMode;
 
+    // Clear out tweets
+    $('div').each(function(index, div) {
+        $(div).html('');
+    });
+
     getNewTweets(1);
 
     setBackgroundColor();
