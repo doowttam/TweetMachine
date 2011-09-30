@@ -1,5 +1,5 @@
 body {
-    background-color: #9ae4e8;
+    background-color: #56e1e8;
 }
 .timelineTOP {
     background-color: white;
@@ -38,6 +38,7 @@ body {
     overflow: hidden;
     height: 70px;
     display: none;
+    font-size: 1.3em;
 }
 .timelineTOP > .tweet:last-child {
     border-bottom: 0px;
@@ -66,7 +67,7 @@ body {
 .centerTweet .tweet {
     height: 140px;
     border-bottom: 0px;
-    font-size: 1.8em;
+    font-size: 2.4em;
 }
 .centerTweet .tweetBody {
     width: 850px;
