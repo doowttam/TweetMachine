@@ -170,3 +170,22 @@ function init() {
     $(document).everyTime(300000, function() { getNewTweets(); }, 0);
 }
 
+function showSwitcher() {
+    if ( $('.switcherWrapper').css('display') == 'block' ) {
+        return;
+    }
+
+    $('.switcherWrapper').css('display', 'block');
+
+    setTimeout(function() {
+        hideSwitcher();
+    }, 5000 );
+}
+
+function hideSwitcher() {
+    $('.switcherWrapper').css('display', 'none');
+}
+
+function pick() {
+    hideSwitcher();
+}

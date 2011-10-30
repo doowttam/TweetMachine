@@ -13,10 +13,18 @@
 
 </head> 
 
-<body onclick="toggleMode()" onLoad="init()">
+<body onmouseover="showSwitcher()" onLoad="init()">
 
 <div class="timelineTOP"></div>
 <div class="centerTweet"></div>
 <div class="timelineBOTTOM"></div>
+
+<div class="switcherWrapper" style="display: none">
+  <div class="switcher">
+    <div class="switcherItem" onclick="pick()"></div>
+    <div class="switcherItem" onclick="pick()"></div>
+    <div class="switcherItem" onclick="pick()"></div>
+  </div>
+</div>
 
 </html>
