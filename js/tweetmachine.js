@@ -9,6 +9,12 @@ var tweetBuilder = null;
 
 var oauth = getOauth('doowttam');
 
+var colors = {
+    'doowttam': '#56e1e8',
+    'caraelizabeth': '#e856ac',
+    'search': '#9156e8'
+};
+
 function getOauth( account ) {
     var oauth_options = {
         consumerKey: keys.consumerKey,
@@ -135,13 +141,12 @@ function updateQueueLength() {
     air.trace('updateQueueLength:' + tweetQueue.length);
 }
 
-function setBackgroundColor() {
-    if ( searchMode ) {
-        $('body').css('background-color', '#9156e8');
+function setBackgroundColor( type ) {
+    if ( !type ) {
+        type = 'doowttam';
     }
-    else {
-        $('body').css('background-color', '#56e1e8');
-    }
+
+    $('body').css('background-color', colors[type]);
 }
 
 function init() {
