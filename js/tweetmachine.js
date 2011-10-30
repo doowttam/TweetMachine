@@ -8,7 +8,6 @@ var lastTweetId  = 1;
 var tweetBuilder = null;
 var switcherTimeout = -1;
 
-
 var oauth = getOauth('doowttam');
 
 var colors = {
@@ -74,8 +73,6 @@ function queueTweets(tweets, populate) {
 }
 
 function getNewTweets(populate) {
-    air.trace('Getting new tweets');
-
     if ( searchMode ) {
         tweetBuilder = buildSearchTweetHTML;
         getSearch(populate);
@@ -90,7 +87,6 @@ function initialPopulate() {
     var bottomTweets = tweetQueue.splice(0, 4);
     var centerTweet = tweetQueue.shift();
     var topTweets = tweetQueue.splice(0, 4);
-
 
     $.each( bottomTweets, function(index, tweet) {
         $('.timelineBOTTOM').prepend(tweetBuilder(tweet));
@@ -107,7 +103,6 @@ function initialPopulate() {
 }
 
 function rotateTweets() {
-    air.trace('Rotating Tweets');
     var newTweet = tweetQueue.shift();
     if ( typeof newTweet == 'undefined' ) {
         return;
@@ -152,14 +147,10 @@ function setBackgroundColor( type ) {
 }
 
 function init() {
-    air.trace('init');
-
     setBackgroundColor();
-
     getNewTweets(1);
 
     $(document).everyTime(30000, function() { rotateTweets(); }, 0);
-
     $(document).everyTime(300000, function() { getNewTweets(); }, 0);
 }
 
@@ -201,6 +192,5 @@ function pick(type) {
     });
 
     getNewTweets(1);
-
     setBackgroundColor(type);
 }
