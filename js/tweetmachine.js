@@ -7,13 +7,6 @@ var tweetQueue   = [];
 var lastTweetId  = 1;
 var tweetBuilder = null;
 
-var oauth_options = {
-    consumerKey: '',
-    consumerSecret: '',
-    accessTokenKey: '',
-    accessTokenSecret: ''
-};
-
 var oauth = OAuth(oauth_options);
 
 function buildTimelineTweetHTML(tweet) {
