@@ -16,15 +16,17 @@
 
 <body onmouseover="showSwitcher()" onLoad="init()">
 
-<div class="timelineTOP"></div>
-<div class="centerTweet"></div>
-<div class="timelineBOTTOM"></div>
+<div class="tweets timelineTOP"></div>
+<div class="tweets centerTweet"></div>
+<div class="tweets timelineBOTTOM"></div>
 
 <div class="switcherWrapper" style="display: none">
-  <div class="switcher"></div>
-  <div class="switcherItem" onclick="pick()"><img src="doowttam.jpg" /></div>
-  <div class="switcherItem" onclick="pick()"></div>
-  <div class="switcherItem" onclick="pick()"></div>
+  <div class="switcherBackground"></div>
+  <div class="switcher">
+    <div class="switcherItem" onclick="pick('doowttam')"><img src="doowttam.jpg" /></div>
+    <div class="switcherItem"><img src="search.png" onclick="pick('search')" /></div>
+    <div class="switcherItem" onclick="pick('caraelizabeth')"><img src="caraelizabeth.jpg" /></div>
+  </div>
 </div>
 
 </html>

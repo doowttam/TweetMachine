@@ -7,7 +7,17 @@ var tweetQueue   = [];
 var lastTweetId  = 1;
 var tweetBuilder = null;
 
-var oauth = OAuth(oauth_options);
+var oauth = getOauth('doowttam');
+
+function getOauth( account ) {
+    var oauth_options = {
+        consumerKey: keys.consumerKey,
+        consumerSecret: keys.consumerSecret,
+        accessTokenKey: keys[account].accessTokenKey,
+        accessTokenSecret: keys[account].accessTokenSecret
+    };
+    return OAuth( oauth_options );
+}
 
 function buildTimelineTweetHTML(tweet) {
     return "<div class='tweet'>"
@@ -125,23 +135,6 @@ function updateQueueLength() {
     air.trace('updateQueueLength:' + tweetQueue.length);
 }
 
-function toggleMode() {
-    air.trace('toggling mode');
-
-    tweetQueue  = [];
-    lastTweetId = 1;
-    searchMode  = !searchMode;
-
-    // Clear out tweets
-    $('div').each(function(index, div) {
-        $(div).html('');
-    });
-
-    getNewTweets(1);
-
-    setBackgroundColor();
-}
-
 function setBackgroundColor() {
     if ( searchMode ) {
         $('body').css('background-color', '#9156e8');
@@ -179,6 +172,28 @@ function hideSwitcher() {
     $('.switcherWrapper').css('display', 'none');
 }
 
-function pick() {
+function pick(type) {
+    air.trace('picking mode: ' + type);
+
     hideSwitcher();
+
+    tweetQueue  = [];
+    lastTweetId = 1;
+
+    if ( type == 'search' ) {
+        searchMode = true;
+    }
+    else {
+        searchMode = false;
+        oauth = getOauth(type);
+    }
+
+    // Clear out tweets
+    $('div.tweets').each(function(index, div) {
+        $(div).html('');
+    });
+
+    getNewTweets(1);
+
+    setBackgroundColor(type);
 }
