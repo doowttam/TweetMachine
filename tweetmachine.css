@@ -71,21 +71,24 @@
     width: 850px;
 }
 .switcherWrapper {
-    width: 620;
+    width: 600;
     border: 3px solid #a1a1a1;
     height: 200;
     margin: auto 0px;
+    padding: 0px 10px;
     position: absolute;
     top: 284;
-    left: 192;
+    left: 202;
     -webkit-border-radius: 15;
 }
 .switcher {
-    width: 600;
+    width: 620;
     height: 200;
     background-color: #a1a1a1;
     opacity: 0.2;
-    padding: 0px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .switcherItem {
     height: 180;
@@ -93,4 +96,5 @@
     float: left;
     background-color: blue;
     margin: 10px;
+    opacity: 1;
 }
