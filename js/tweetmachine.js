@@ -6,6 +6,8 @@ var searchMode  = false;
 var tweetQueue   = [];
 var lastTweetId  = 1;
 var tweetBuilder = null;
+var switcherTimeout = -1;
+
 
 var oauth = getOauth('doowttam');
 
@@ -163,14 +165,14 @@ function init() {
 
 function showSwitcher() {
     if ( $('.switcherWrapper').css('display') == 'block' ) {
-        return;
+        clearTimeout(switcherTimeout);
     }
 
     $('.switcherWrapper').css('display', 'block');
 
-    setTimeout(function() {
+    switcherTimeout = setTimeout(function() {
         hideSwitcher();
-    }, 5000 );
+    }, 2000 );
 }
 
 function hideSwitcher() {
